@@ -7,12 +7,6 @@ async def main():
     
 @cl.on_message
 async def handle_message(message: cl.Message):
-    """
-    Handle an incoming message from the user.
-
-    Parameters:
-    - message: The incoming message object containing user input.
-    """
 
     messages.append({"role": "user", "content": message.content})
 
@@ -36,25 +30,10 @@ async def handle_message(message: cl.Message):
 
 
 def generate_response(messages):
-    """
-    Generate a response from the assistant based on the conversation history.
-
-    Parameters:
-    - messages: A list of all previous messages in the conversation.
-
-    Returns:
-    - response: The assistant's response as a string.
-    """
     return ask_order(messages)
 
 
 async def send_response(response):
-    """
-    Send the assistant's response back to the Chainlit UI.
-
-    Parameters:
-    - response: The response content to be sent.
-    """
     await cl.Message(content=response).send()
 
 async def update_sidebar():
